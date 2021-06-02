@@ -1,0 +1,5 @@
+name: SurvivalVoteListener
+version: @version@
+main: xyz.n7mn.dev.survivalvotelistener.SurvivalVoteListener
+api-version: 1.16
+description: SurvivalVoteListener

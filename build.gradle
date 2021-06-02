@@ -1,0 +1,43 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'java'
+}
+
+group = 'xyz.n7mn.dev'
+version = '1.0'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'papermc-repo'
+        url = 'https://papermc.io/repo/repository/maven-public/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+
+    maven {
+        url 'https://jitpack.io'
+    }
+
+    maven {
+        url 'https://repo.pl3x.net/'
+    }
+}
+
+dependencies {
+    compileOnly 'net.pl3x.purpur:purpur-api:1.16.5-R0.1-SNAPSHOT'
+    compileOnly files('lib/nuvotifier-2.7.2.jar')
+    compile 'com.squareup.okhttp3:okhttp:4.9.0'
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        filter ReplaceTokens, tokens: [version: version]
+    }
+}
